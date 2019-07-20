@@ -1,6 +1,6 @@
 # Documentation
 
-Find nodes from the HTML with a CSS selector:
+Find _ from the HTML with a CSS selector:
 
 ```js
 u('ul#demo li')
@@ -20,7 +20,7 @@ The first parameter can be:
 - A text CSS selector
 - A single HTML Node. This is specially useful in events where you can just pass `this`
 - A NodeList or other similar objects that can be converted to an array
-- An array of nodes*
+- An array of _*
 - Another Umbrella instance
 - An HTML fragment as a string
 - Nothing
@@ -74,11 +74,11 @@ u('body').append(list);
 
 > This section is inspired by [Bliss.js' vanilla methods](http://blissfuljs.com/docs.html#vanilla)
 
-There are many native methods and properties that you can use. These can be called straight in the `.first()` or `.last()` elements, a `.nodes` element or you can loop every element to call them. For example:
+There are many native methods and properties that you can use. These can be called straight in the `.first()` or `.last()` elements, a `._` element or you can loop every element to call them. For example:
 
 ```js
-// Single element from .nodes
-u('h1').nodes[0].classList.add('vanilla');
+// Single element from ._
+u('h1')._[0].classList.add('vanilla');
 
 // Single element
 u('h1').first().classList.add('vanilla', 'test');
@@ -89,18 +89,18 @@ u('h2').each(function(el){
 });
 ```
 
-And for the arrays it's similar, you can call any array method on `u().nodes` since this is literally an array:
+And for the arrays it's similar, you can call any array method on `u()._` since this is literally an array:
 
 ```js
-u('h2').nodes.forEach();
-var mapped = u('h2').nodes.map();
-var filtered = u('h2').nodes.filter();
-var good = u('h2').nodes.some();
+u('h2')._.forEach();
+var mapped = u('h2')._.map();
+var filtered = u('h2')._.filter();
+var good = u('h2')._.some();
 ```
 
 However, there are also some advantages of using Umbrella's methods instead of native methods. For example, with `.addClass()` vs native `classList.add()`:
 
-- **error prevention**: if nodes.length = 0, the single-element way will fail in the above implementation (since first() and nodes[0] are null)
+- **error prevention**: if _.length = 0, the single-element way will fail in the above implementation (since first() and _[0] are null)
 - **cross-browser**: the classList.add() with multiple elements [is not compatible with IE10-11 & Android 4.3-](http://caniuse.com/#search=classList)
 - **chainable**: `u('<div>').each(...).addClass(...);`
 - **more flexibility**: there are many ways to specify multiple classes with addClass, and only one way to specify them on the native way. Imagine that you have an array of classes, with the native method this becomes a nightmare. This is what it means to be flexible:

@@ -72,7 +72,7 @@ function ajax (action, opt, done, before) {
 
   // An error is just an error
   // This uses a little hack of passing an array to u() so it handles it as
-  // an array of nodes, hence we can use 'on'. However a single element wouldn't
+  // an array of _, hence we can use 'on'. However a single element wouldn't
   // work since it a) doesn't have nodeName and b) it will be sliced, failing
   u(request).on('error timeout abort', function () {
     done(new Error(), null, request);

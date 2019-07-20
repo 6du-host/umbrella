@@ -1,6 +1,6 @@
 ## .parent()
 
-Retrieve each parent of the matched nodes, optionally filtered by a selector
+Retrieve each parent of the matched _, optionally filtered by a selector
 
 ```js
 .parent()
@@ -35,6 +35,6 @@ u('a').parent('p');
 
 [.children()](#parent) get all of the direct children
 
-[.find()](#find) get all of the descendants of the matched nodes
+[.find()](#find) get all of the descendants of the matched _
 
 [.closest()](#closest) get the first ascendant that matches the selector

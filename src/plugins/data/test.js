@@ -21,7 +21,7 @@ describe(".data(name, value)", function() {
     expect(base.data('title')).to.equal('Hello');
   });
 
-  it("can be called with no nodes", function() {
+  it("can be called with no _", function() {
     expect(u('dfsdf').data('title')).to.equal('');
   });
 });

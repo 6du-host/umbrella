@@ -31,16 +31,16 @@ var u = function (parameter, context) {
   }
 
   // Convert to an array, since there are many 'array-like' stuff in js-land
-  this.nodes = this.slice(parameter);
+  this._ = this.slice(parameter);
 };
 
-// Map u(...).length to u(...).nodes.length
+// Map u(...).length to u(...)._.length
 u.prototype = {
   get length () {
-    return this.nodes.length;
+    return this._.length;
   }
 };
 
 // This made the code faster, read "Initializing instance variables" in
 // https://developers.google.com/speed/articles/optimizing-javascript
-u.prototype.nodes = [];
+u.prototype._ = [];

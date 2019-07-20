@@ -101,7 +101,7 @@ Result:
 </div>
 ```
 
-Nested selector arguments with multiple child nodes:
+Nested selector arguments with multiple child _:
 
 ```html
 <button class="example">Link1</button>

@@ -3,7 +3,7 @@
 // Create a string from different things
 u.prototype.str = function (node, i) {
   return function (arg) {
-    // Call the function with the corresponding nodes
+    // Call the function with the corresponding _
     if (typeof arg === 'function') {
       return arg.call(this, node, i);
     }

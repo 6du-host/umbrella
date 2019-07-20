@@ -23,7 +23,7 @@ Add some html as a sibling after each of the matched elements.
     - **string** containing the html that is going to be inserted
     - **instance of Umbrella**
     - **HTML node**
-    - **array** containing HTML nodes
+    - **array** containing HTML _
   - A callback that returns any of the previous. It gets passed these parameters:
     - **el**: the current element from the elements parameter, {} if none is specified and i if elements is number
     - **i**: the index of the current element

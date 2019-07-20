@@ -1,6 +1,6 @@
 ## .off()
 
-Remove event handler from matched nodes
+Remove event handler from matched _
 
 ```js
 .off('event1')
@@ -47,8 +47,8 @@ u('.off-multiple-test').trigger('click'); //No alert
 
 ### Related
 
-[.on()](#on) Attaches an event to matched nodes
+[.on()](#on) Attaches an event to matched _
 
 [.handle()](#handle) Same as `.on()`, but it prevents the default action
 
-[.trigger()](#trigger) Triggers an event on all of the matched nodes
+[.trigger()](#trigger) Triggers an event on all of the matched _

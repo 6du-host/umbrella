@@ -9,7 +9,7 @@ u.prototype.adjacent = function (html, data, callback) {
     }
   }
 
-  // Loop through all the nodes. It cannot reuse the eacharg() since the data
+  // Loop through all the _. It cannot reuse the eacharg() since the data
   // we want to do it once even if there's no "data" and we accept a selector
   return this.each(function (node, j) {
     var fragment = document.createDocumentFragment();

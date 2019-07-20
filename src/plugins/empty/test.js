@@ -27,24 +27,24 @@ describe(".empty()", function() {
     u('.empty-test div').empty();
   });
 
-  it("will clean text-only nodes", function() {
+  it("will clean text-only _", function() {
     u('.empty-test').html('Hello world');
     expect(u('.empty-test').html()).to.equal('Hello world');
     u('.empty-test').empty();
     expect(u('.empty-test').html()).to.equal('');
   });
 
-  it("will clean mixed nodes", function() {
+  it("will clean mixed _", function() {
     u('.empty-test').html('Hello world!<p>How <strong>are you</strong>?</p>');
     u('.empty-test').empty();
     expect(u('.empty-test').html()).to.equal('');
   });
 
-  it("should return an instance of umbrella with the empty nodes", function() {
+  it("should return an instance of umbrella with the empty _", function() {
     var result = u('.empty-test').empty();
 
     expect(result).to.be.instanceof(u);
-    expect(result.nodes).to.have.length(1);
+    expect(result._).to.have.length(1);
     expect(result.attr('class')).to.equal('empty-test');
   });
 

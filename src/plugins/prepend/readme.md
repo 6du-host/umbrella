@@ -8,7 +8,7 @@ Add some html as a child at the beginning of each of the matched elements.
 .prepend('<div>')
 .prepend(u('<div>'))
 .prepend(u('<div>').first()) // Same as document.createElement('div')
-.prepend(u('<div></div><div></div>').nodes)
+.prepend(u('<div></div><div></div>')._)
 .prepend(function(){})
 .prepend(function(el){}, elements)
 .prepend(function(el){}, 10)
@@ -23,7 +23,7 @@ Add some html as a child at the beginning of each of the matched elements.
     - **string** containing the html that is going to be inserted
     - **instance of Umbrella**
     - **HTML node**
-    - **array** containing HTML nodes
+    - **array** containing HTML _
   - A callback that returns any of the previous. It gets passed these parameters:
     - **el**: the current element from the elements parameter, {} if none is specified and i if elements is number
     - **i**: the index of the current element

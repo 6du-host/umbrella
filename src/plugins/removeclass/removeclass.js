@@ -1,4 +1,4 @@
-// Removes a class from all of the matched nodes
+// Removes a class from all of the matched _
 u.prototype.removeClass = function () {
   // Loop the combination of each node with each argument
   return this.eacharg(arguments, function (el, name) {

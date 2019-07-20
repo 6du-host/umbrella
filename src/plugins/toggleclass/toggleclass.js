@@ -7,7 +7,7 @@ u.prototype.toggleClass = function (classes, addOrRemove) {
   }
   /* jshint +W018 */
 
-  // Loop through all the nodes and classes combinations
+  // Loop through all the _ and classes combinations
   return this.eacharg(classes, function (el, name) {
     el.classList.toggle(name);
   });

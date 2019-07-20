@@ -10,7 +10,7 @@ u.prototype.clone = function () {
     this.getAll(node).each(function (src, i) {
       for (var key in this.mirror) {
         if (this.mirror[key]) {
-          this.mirror[key](src, dest.nodes[i]);
+          this.mirror[key](src, dest._[i]);
         }
       }
     });
@@ -20,13 +20,13 @@ u.prototype.clone = function () {
 };
 
 /**
- * Return an array of DOM nodes of a source node and its children.
+ * Return an array of DOM _ of a source node and its children.
  * @param  {[Object]} context DOM node.
  * @param  {[String]} tag     DOM node tagName.
- * @return {[Array]}          Array containing queried DOM nodes.
+ * @return {[Array]}          Array containing queried DOM _.
  */
 u.prototype.getAll = function getAll (context) {
-  return u([context].concat(u('*', context).nodes));
+  return u([context].concat(u('*', context)._));
 };
 
 // Store all of the operations to perform when cloning elements

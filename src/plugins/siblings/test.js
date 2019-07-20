@@ -15,13 +15,13 @@ describe(".siblings(selector)", function() {
       </ul> \
     ');
 
-    expect(u('.siblings-test').nodes.length).to.equal(2);
-    expect(u('.siblings-test li').nodes.length).to.equal(6);
+    expect(u('.siblings-test')._.length).to.equal(2);
+    expect(u('.siblings-test li')._.length).to.equal(6);
   });
 
   afterEach(function() {
     u('.siblings-test').remove();
-    expect(u('.siblings-test').nodes.length).to.equal(0);
+    expect(u('.siblings-test')._.length).to.equal(0);
   });
   
   it("should be a function", function() {
@@ -29,18 +29,18 @@ describe(".siblings(selector)", function() {
   });
   
   it("can select multiple siblings", function() {
-    expect(base.find('#siblings-2').siblings().nodes.length).to.equal(2);
+    expect(base.find('#siblings-2').siblings()._.length).to.equal(2);
   });
   
   it("can filter the siblings", function() {
-    expect(base.find('#siblings-1').siblings('#siblings-2').nodes.length).to.equal(1);
+    expect(base.find('#siblings-1').siblings('#siblings-2')._.length).to.equal(1);
   });
   
   it("can handle non existant siblings ", function() {
-    expect(base.find('#siblings-2').siblings('.nonexist').nodes.length).to.equal(0);
+    expect(base.find('#siblings-2').siblings('.nonexist')._.length).to.equal(0);
   });
 
-  it("can handle multiple nodes", function() {
-    expect(base.find('.siblings-test').children('.selected').siblings().nodes.length).to.equal(4);
+  it("can handle multiple _", function() {
+    expect(base.find('.siblings-test').children('.selected').siblings()._.length).to.equal(4);
   });
 });

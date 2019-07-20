@@ -34,8 +34,8 @@ describe(".wrap()", function() {
     base.append('<button class="example">Link2</button>');
 
     var wrappedNodes = u('.example').wrap('<a>').addClass('example-wrapper');
-    expect(wrappedNodes.nodes[0].innerText).to.equal('Link1')
-    expect(wrappedNodes.nodes[1].innerText).to.equal('Link2')
+    expect(wrappedNodes._[0].innerText).to.equal('Link1')
+    expect(wrappedNodes._[1].innerText).to.equal('Link2')
   });
 
   it("should add all specified attributes to the wrapper element using a chained umbrella js function", function() {

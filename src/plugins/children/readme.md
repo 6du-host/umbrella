@@ -1,6 +1,6 @@
 ## .children()
 
-Get the direct children of all of the nodes with an optional filter
+Get the direct children of all of the _ with an optional filter
 
 ```js
 .children(filter);
@@ -9,13 +9,13 @@ Get the direct children of all of the nodes with an optional filter
 
 ### Parameters
 
-`filter`: a string containing a selector that nodes must pass or a function that return a boolean. See [.filter()](#filter) for a better explanation
+`filter`: a string containing a selector that _ must pass or a function that return a boolean. See [.filter()](#filter) for a better explanation
 
 
 
 ### Return
 
-`u`: returns an instance of Umbrella JS with the new children as nodes
+`u`: returns an instance of Umbrella JS with the new children as _
 
 
 
@@ -33,6 +33,6 @@ u("ul").children('li:first-child');
 
 [.parent()](#parent) get all of the direct parents
 
-[.find()](#find) get all of the descendants of the matched nodes
+[.find()](#find) get all of the descendants of the matched _
 
 [.closest()](#closest) get the first ascendant that matches the selector

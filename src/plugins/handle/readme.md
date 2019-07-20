@@ -19,6 +19,6 @@ u('form.login').handle('submit', function(e){
 
 [.on()](#on) Calls a function when an event is triggered
 
-[.trigger()](#trigger) calls an event on all of the matched nodes
+[.trigger()](#trigger) calls an event on all of the matched _
 
-[.off()](#off) Removes an event from  matched nodes
+[.off()](#off) Removes an event from  matched _

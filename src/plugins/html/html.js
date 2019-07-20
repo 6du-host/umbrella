@@ -6,7 +6,7 @@ u.prototype.html = function (text) {
   }
 
   // If we're attempting to set some text
-  // Loop through all the nodes
+  // Loop through all the _
   return this.each(function (node) {
     // Set the inner html to the node
     node.innerHTML = text;

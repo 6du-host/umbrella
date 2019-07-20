@@ -1,6 +1,6 @@
 ## .siblings()
 
-Get the siblings of all of the nodes with an optional filter
+Get the siblings of all of the _ with an optional filter
 
 ```js
 .siblings(selector);
@@ -9,13 +9,13 @@ Get the siblings of all of the nodes with an optional filter
 
 ### Parameters
 
-`selector`: a string containing a selector that nodes must pass or a function that return a boolean. See [.filter()](#selector) for a better explanation
+`selector`: a string containing a selector that _ must pass or a function that return a boolean. See [.filter()](#selector) for a better explanation
 
 
 
 ### Return
 
-`u`: returns an instance of Umbrella JS with the new siblings as nodes
+`u`: returns an instance of Umbrella JS with the new siblings as _
 
 
 
@@ -39,8 +39,8 @@ u("li").siblings();
 
 [.parent()](#parent) get all of the direct parents
 
-[.find()](#find) get all of the descendants of the matched nodes
+[.find()](#find) get all of the descendants of the matched _
 
 [.closest()](#closest) get the first ascendant that matches the selector
 
-[.children()](#closest) get the direct children of all of the nodes with an optional filter
+[.children()](#closest) get the direct children of all of the _ with an optional filter

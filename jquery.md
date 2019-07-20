@@ -91,7 +91,7 @@ function getStyle(oElm, css3Prop){
 ```js
 // usage examples
 // Umbrella: use use one node
-getStyle(u('.myClass').nodes[n], "border-radius");
+getStyle(u('.myClass')._[n], "border-radius");
 
 // use one native DOM node
 getStyle(getElementsByClassName('myClass')[n], "border-radius");
@@ -163,7 +163,7 @@ in jQuery `.first()/.last()/.eq()` returns a jQuery object, but UmbrellaJS retur
 - con: you can't chain an other UmbrellaJS method like in jQuery
 - con: be careful to select the correct DOM property/method!
 
-**Wait,** there is no `.eq()` in UmbrellaJS, but you can use `.nodes[n]` as a functional replacment.
+**Wait,** there is no `.eq()` in UmbrellaJS, but you can use `._[n]` as a functional replacment.
 
 **power tip from UmbrellaJS creator:** You can wrap the whole thing into another `u(...)` and use UmbrellaJS functions conveniently.
 
@@ -210,15 +210,15 @@ myButton.onclick = showConfig;
 myButton.value = 'Config ';
 
 // append native DOM node befre n'th element
-u('.subNavMenu').nodes[n].after(enMenuButton);
+u('.subNavMenu')._[n].after(enMenuButton);
 ```
 
 If you want to have an UmbrellaJS `.eq()` method and don't care about an extra function call, adding this to your script may help:
 
 ```
-// get the nth of the nodes
+// get the nth of the _
 u.prototype.eq = function (index) {
-  return this.nodes[index||0] || false;
+  return this._[index||0] || false;
 }
 ```
 
@@ -260,18 +260,18 @@ You can apply most tips from there to single UmbrellaJS node directly:
 $('#hide').hide();
 $('.myclass').hide();
 
-// Umbrella: apply "You Might Not Need jQuery" tips to one Umbrella nodes[n]
-$('#hide').nodes[0].style.display = 'none';
-$('.myclass').nodes[n].style.display = 'none';
+// Umbrella: apply "You Might Not Need jQuery" tips to one Umbrella _[n]
+$('#hide')._[0].style.display = 'none';
+$('.myclass')._[n].style.display = 'none';
 ```
 
-If you have to apply to all nodes returned from UmbrellaJS, you can use an `.each()` loop to apply to every node
+If you have to apply to all _ returned from UmbrellaJS, you can use an `.each()` loop to apply to every node
 
 ```js
 // jQuery
 $('.myclass').empty();
 
-// Umbrella: apply "You Might Not Need jQuery" tips to all Umbrella nodes
+// Umbrella: apply "You Might Not Need jQuery" tips to all Umbrella _
 $('.myclass').each(function (el) {
   el.innerHTML = '';
 });

@@ -1,5 +1,5 @@
 // .filter(selector)
-// Delete all of the nodes that don't pass the selector
+// Delete all of the _ that don't pass the selector
 u.prototype.filter = function (selector) {
   // The default function if it's a CSS selector
   // Cannot change name to 'selector' since it'd mess with it inside this fn
@@ -17,10 +17,10 @@ u.prototype.filter = function (selector) {
   // filter() receives an instance of Umbrella as in .filter(u('a'))
   if (selector instanceof u) {
     callback = function (node) {
-      return (selector.nodes).indexOf(node) !== -1;
+      return (selector._).indexOf(node) !== -1;
     };
   }
 
   // Just a native filtering function for ultra-speed
-  return u(this.nodes.filter(callback));
+  return u(this._.filter(callback));
 };

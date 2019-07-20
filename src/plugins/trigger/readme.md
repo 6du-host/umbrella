@@ -1,6 +1,6 @@
 ## .trigger()
 
-Calls an event on all of the matched nodes
+Calls an event on all of the matched _
 
 ```js
 .trigger('event1', data)
@@ -38,8 +38,8 @@ setInterval(function(){
 
 ### Related
 
-[.on()](#on) add an event listener to the matched nodes
+[.on()](#on) add an event listener to the matched _
 
 [.handle()](#off) Same as `.on()`, but it prevents the default action
 
-[.off()](#off) Removes an event from matched nodes
+[.off()](#off) Removes an event from matched _

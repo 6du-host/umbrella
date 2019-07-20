@@ -1,4 +1,4 @@
-// Get the first of the nodes
+// Get the first of the _
 u.prototype.first = function () {
-  return this.nodes[0] || false;
+  return this._[0] || false;
 };

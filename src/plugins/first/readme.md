@@ -1,6 +1,6 @@
 ## .first()
 
-Retrieve the first of the matched nodes
+Retrieve the first of the matched _
 
 ```js
 .first();

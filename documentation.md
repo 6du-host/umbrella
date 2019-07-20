@@ -1,6 +1,6 @@
 # Documentation
 
-Find nodes from the HTML with a CSS selector:
+Find _ from the HTML with a CSS selector:
 
 ```js
 u('ul#demo li')
@@ -20,7 +20,7 @@ The first parameter can be:
 - A text CSS selector
 - A single HTML Node. This is specially useful in events where you can just pass `this`
 - A NodeList or other similar objects that can be converted to an array
-- An array of nodes*
+- An array of _*
 - Another Umbrella instance
 - An HTML fragment as a string
 - Nothing
@@ -74,11 +74,11 @@ u('body').append(list);
 
 > This section is inspired by [Bliss.js' vanilla methods](http://blissfuljs.com/docs.html#vanilla)
 
-There are many native methods and properties that you can use. These can be called straight in the `.first()` or `.last()` elements, a `.nodes` element or you can loop every element to call them. For example:
+There are many native methods and properties that you can use. These can be called straight in the `.first()` or `.last()` elements, a `._` element or you can loop every element to call them. For example:
 
 ```js
-// Single element from .nodes
-u('h1').nodes[0].classList.add('vanilla');
+// Single element from ._
+u('h1')._[0].classList.add('vanilla');
 
 // Single element
 u('h1').first().classList.add('vanilla', 'test');
@@ -89,18 +89,18 @@ u('h2').each(function(el){
 });
 ```
 
-And for the arrays it's similar, you can call any array method on `u().nodes` since this is literally an array:
+And for the arrays it's similar, you can call any array method on `u()._` since this is literally an array:
 
 ```js
-u('h2').nodes.forEach();
-var mapped = u('h2').nodes.map();
-var filtered = u('h2').nodes.filter();
-var good = u('h2').nodes.some();
+u('h2')._.forEach();
+var mapped = u('h2')._.map();
+var filtered = u('h2')._.filter();
+var good = u('h2')._.some();
 ```
 
 However, there are also some advantages of using Umbrella's methods instead of native methods. For example, with `.addClass()` vs native `classList.add()`:
 
-- **error prevention**: if nodes.length = 0, the single-element way will fail in the above implementation (since first() and nodes[0] are null)
+- **error prevention**: if _.length = 0, the single-element way will fail in the above implementation (since first() and _[0] are null)
 - **cross-browser**: the classList.add() with multiple elements [is not compatible with IE10-11 & Android 4.3-](http://caniuse.com/#search=classList)
 - **chainable**: `u('<div>').each(...).addClass(...);`
 - **more flexibility**: there are many ways to specify multiple classes with addClass, and only one way to specify them on the native way. Imagine that you have an array of classes, with the native method this becomes a nightmare. This is what it means to be flexible:
@@ -202,7 +202,7 @@ Add some html as a sibling after each of the matched elements.
     - **string** containing the html that is going to be inserted
     - **instance of Umbrella**
     - **HTML node**
-    - **array** containing HTML nodes
+    - **array** containing HTML _
   - A callback that returns any of the previous. It gets passed these parameters:
     - **el**: the current element from the elements parameter, {} if none is specified and i if elements is number
     - **i**: the index of the current element
@@ -302,7 +302,7 @@ Add some html as a child at the end of each of the matched elements
     - **string** containing the html that is going to be inserted
     - **instance of Umbrella**
     - **HTML node**
-    - **array** containing HTML nodes
+    - **array** containing HTML _
   - A callback that returns any of the previous. It gets passed these parameters:
     - **el**: the current element from the elements parameter, {} if none is specified and i if elements is number
     - **i**: the index of the current element
@@ -520,7 +520,7 @@ Add some html before each of the matched elements.
     - **string** containing the html that is going to be inserted
     - **instance of Umbrella**
     - **HTML node**
-    - **array** containing HTML nodes
+    - **array** containing HTML _
   - A callback that returns any of the previous. It gets passed these parameters:
     - **el**: the current element from the elements parameter, {} if none is specified and i if elements is number
     - **i**: the index of the current element
@@ -597,7 +597,7 @@ u("a.main").before(function(){
 
 ## .children()
 
-Get the direct children of all of the nodes with an optional filter
+Get the direct children of all of the _ with an optional filter
 
 ```js
 .children(filter);
@@ -606,13 +606,13 @@ Get the direct children of all of the nodes with an optional filter
 
 ### Parameters
 
-`filter`: a string containing a selector that nodes must pass or a function that return a boolean. See [.filter()](#filter) for a better explanation
+`filter`: a string containing a selector that _ must pass or a function that return a boolean. See [.filter()](#filter) for a better explanation
 
 
 
 ### Return
 
-`u`: returns an instance of Umbrella JS with the new children as nodes
+`u`: returns an instance of Umbrella JS with the new children as _
 
 
 
@@ -630,7 +630,7 @@ u("ul").children('li:first-child');
 
 [.parent()](#parent) get all of the direct parents
 
-[.find()](#find) get all of the descendants of the matched nodes
+[.find()](#find) get all of the descendants of the matched _
 
 [.closest()](#closest) get the first ascendant that matches the selector
 
@@ -646,9 +646,9 @@ u('.elementToClone').clone()
 
 ### Extensions
   - The following extensions are enabled by default:
-    - **events** clone the events of all of the nodes. To disable it globally, add `u.prototype.mirror.events = false;` to your code.
-    - **select** select input node values are copied to all cloned nodes. To disable globally, add `u.prototype.mirror.select = false;` to your code.
-    - **textarea** textarea input node values are copied to all cloned nodes. To disable globally, add `u.prototype.mirror.textarea = false;` to your code.
+    - **events** clone the events of all of the _. To disable it globally, add `u.prototype.mirror.events = false;` to your code.
+    - **select** select input node values are copied to all cloned _. To disable globally, add `u.prototype.mirror.select = false;` to your code.
+    - **textarea** textarea input node values are copied to all cloned _. To disable globally, add `u.prototype.mirror.textarea = false;` to your code.
 
 
 ### Return
@@ -697,13 +697,13 @@ Find the first ancestor that matches the selector for each node
 
 ### Parameters
 
-`filter`: a string containing a selector that nodes must pass or a function that return a boolean. See [.filter()](#filter) for a better explanation
+`filter`: a string containing a selector that _ must pass or a function that return a boolean. See [.filter()](#filter) for a better explanation
 
 
 
 ### Return
 
-`u`: returns an instance of Umbrella JS with the new ancestors as nodes
+`u`: returns an instance of Umbrella JS with the new ancestors as _
 
 
 
@@ -719,11 +719,11 @@ u("li").closest('ul');
 
 ### Related
 
-[.find()](#find) get all of the descendants of the matched nodes
+[.find()](#find) get all of the descendants of the matched _
 
 [.parent()](#parent) get all of the direct parents
 
-[.children()](#children) get the direct children of all of the nodes with an optional filter
+[.children()](#children) get the direct children of all of the _ with an optional filter
 
 ## .data()
 
@@ -796,7 +796,7 @@ u('ul li').first().data('id', '2'); // <li data-id='2'>First</li>
 
 ## .each()
 
-Loop through all of the nodes and execute a callback for each
+Loop through all of the _ and execute a callback for each
 
 ```js
 .each(function(node, i){});
@@ -811,7 +811,7 @@ Loop through all of the nodes and execute a callback for each
 
 ### Return
 
-`u`: returns an instance of Umbrella JS with the same nodes
+`u`: returns an instance of Umbrella JS with the same _
 
 
 
@@ -826,7 +826,7 @@ u('a').each(function(node, i){
 ```
 ## .empty()
 
-Remove all child nodes of the matched elements.
+Remove all child _ of the matched elements.
 
 ```js
 .empty();
@@ -840,12 +840,12 @@ This method doesn't accept any parameters
 
 ### Return
 
-`u`: Returns an instance of Umbrella JS with the empty nodes.
+`u`: Returns an instance of Umbrella JS with the empty _.
 
 
 ### Examples
 
-Removes all child nodes from all containers:
+Removes all child _ from all containers:
 
 ```js
 u("div.container").empty();
@@ -858,7 +858,7 @@ u("div.container").empty();
 
 ## .filter()
 
-Remove all the nodes that doesn't match the criteria
+Remove all the _ that doesn't match the criteria
 
 ```js
 .filter('a')
@@ -870,14 +870,14 @@ Remove all the nodes that doesn't match the criteria
 ### Parameters
 
 `filter`: it can be:
-  - CSS selector that each of the nodes must match to stay
+  - CSS selector that each of the _ must match to stay
   - Instance of Umbrella with the elements to keep (the intersection will be kept)
   - Function that returns a boolean with true to keep the element. It accepts two parameters, `node` and `index`, and the context of `this` is the instance of Umbrella so methods like `this.slice()` are available
 
 
 ### Returns
 
-An instance of Umbrella with the nodes that passed the filter.
+An instance of Umbrella with the _ that passed the filter.
 
 
 ### Examples
@@ -909,13 +909,13 @@ u('input').filter(function(node, i){
 
 ### Related
 
-[.is()](#is) check whether one or more of the nodes is of one type
+[.is()](#is) check whether one or more of the _ is of one type
 
-[.not()](#not) remove all the nodes that match the criteria
+[.not()](#not) remove all the _ that match the criteria
 
 ## .find()
 
-Get all of the descendants of the nodes with an optional filter
+Get all of the descendants of the _ with an optional filter
 
 ```js
 .find(filter);
@@ -924,13 +924,13 @@ Get all of the descendants of the nodes with an optional filter
 
 ### Parameters
 
-`filter`: a string containing a selector that nodes must pass or a function that return a boolean. See [.filter()](#filter) for a better explanation
+`filter`: a string containing a selector that _ must pass or a function that return a boolean. See [.filter()](#filter) for a better explanation
 
 
 
 ### Return
 
-An instance of Umbrella with the new children as nodes
+An instance of Umbrella with the new children as _
 
 
 
@@ -958,11 +958,11 @@ u('form').on('submit', function(e){
 
 [.parent()](#parent) get all of the direct parents
 
-[.children()](#find) get the direct child of the matched nodes
+[.children()](#find) get the direct child of the matched _
 
 ## .first()
 
-Retrieve the first of the matched nodes
+Retrieve the first of the matched _
 
 ```js
 .first();
@@ -1014,9 +1014,9 @@ u('form.login').handle('submit', function(e){
 
 [.on()](#on) Calls a function when an event is triggered
 
-[.trigger()](#trigger) calls an event on all of the matched nodes
+[.trigger()](#trigger) calls an event on all of the matched _
 
-[.off()](#off) Removes an event from  matched nodes
+[.off()](#off) Removes an event from  matched _
 
 ## .hasClass()
 
@@ -1147,7 +1147,7 @@ u('h1').html('Hello world');
 
 ## .is()
 
-Check whether any of the nodes matches the selector
+Check whether any of the _ matches the selector
 
 ```js
 .is('a')
@@ -1162,13 +1162,13 @@ Check whether any of the nodes matches the selector
 `filter`: it can be two things:
   - CSS selector to check
   - Instance of Umbrella with the elements to check
-  - Function that returns a boolean to check for each of the nodes. If one of them returns true, then the method `is()` returns true. It accepts two parameters, `node` and `index`, and the context of `this` is the instance of Umbrella so methods like `this.slice()` are available.
+  - Function that returns a boolean to check for each of the _. If one of them returns true, then the method `is()` returns true. It accepts two parameters, `node` and `index`, and the context of `this` is the instance of Umbrella so methods like `this.slice()` are available.
 
 
 
 ### Return
 
-*boolean*: *true* if any of the nodes matches the selector or the function returns true, false otherwise.
+*boolean*: *true* if any of the _ matches the selector or the function returns true, false otherwise.
 
 
 
@@ -1192,9 +1192,9 @@ u('form.subscribe').on('submit', function(e) {
 
 ### Related
 
-[.filter()](#filter) remove unwanted nodes
+[.filter()](#filter) remove unwanted _
 
-[.not()](#not) remove all the nodes that match the criteria
+[.not()](#not) remove all the _ that match the criteria
 
 ## .last()
 
@@ -1251,15 +1251,15 @@ var links = u('.special li').map(function(node, i){
 }).addClass('expensive');
 ```
 
-It can return a value that evaluates to false, a single element, an string, an array or an Umbrella instance. It will **remove duplicated nodes** from the result.
+It can return a value that evaluates to false, a single element, an string, an array or an Umbrella instance. It will **remove duplicated _** from the result.
 
-> Note: Umbrella JS is made to manipulate HTML nodes so it will consider the string "" and 0 as false and remove them. Return an HTML node or an HTML string to keep the elements.
+> Note: Umbrella JS is made to manipulate HTML _ so it will consider the string "" and 0 as false and remove them. Return an HTML node or an HTML string to keep the elements.
 
 
 
 ### Return
 
-An instance of Umbrella with the nodes passed
+An instance of Umbrella with the _ passed
 
 
 
@@ -1279,7 +1279,7 @@ var lists = u('li').map(function(node){ return node.parentNode });
 
 ## .not()
 
-Remove known nodes from nodes
+Remove known _ from _
 
 ```js
 .not('a')
@@ -1291,7 +1291,7 @@ Remove known nodes from nodes
 ### Parameters
 
 `not`: it can be two things (in order):
-  - CSS selector that each of the nodes must **not** match to stay
+  - CSS selector that each of the _ must **not** match to stay
   - Instance of Umbrella with the element to remove
   - Function that returns `true` to remove the element. It accepts **one parameter**, and the context of `this` is the instance of Umbrella so methods like `this.slice()` are available
 
@@ -1328,13 +1328,13 @@ active_links = u('.menu a').not(nonactive_links);
 
 ### Related
 
-[.is()](#is) check whether one or more of the nodes is of one type
+[.is()](#is) check whether one or more of the _ is of one type
 
-[.filter()](#filter) Remove unwanted nodes
+[.filter()](#filter) Remove unwanted _
 
 ## .off()
 
-Remove event handler from matched nodes
+Remove event handler from matched _
 
 ```js
 .off('event1')
@@ -1381,11 +1381,11 @@ u('.off-multiple-test').trigger('click'); //No alert
 
 ### Related
 
-[.on()](#on) Attaches an event to matched nodes
+[.on()](#on) Attaches an event to matched _
 
 [.handle()](#handle) Same as `.on()`, but it prevents the default action
 
-[.trigger()](#trigger) Triggers an event on all of the matched nodes
+[.trigger()](#trigger) Triggers an event on all of the matched _
 
 ## .on()
 
@@ -1419,7 +1419,7 @@ Another way is doing event delegation, for which the parameters are:
 
 `event1`, `event2`, `eventN`: same as before
 
-`selector`: a CSS selector that matches the nodes that will trigger it
+`selector`: a CSS selector that matches the _ that will trigger it
 
 `callback`: same as before
 
@@ -1462,13 +1462,13 @@ u('input').on('change click blur paste', function(){
 
 [.handle()](#handle) Same as `.on()`, but it prevents the default action
 
-[.trigger()](#trigger) calls an event on all of the matched nodes
+[.trigger()](#trigger) calls an event on all of the matched _
 
-[.off()](#off) Removes an event from  matched nodes
+[.off()](#off) Removes an event from  matched _
 
 ## .parent()
 
-Retrieve each parent of the matched nodes, optionally filtered by a selector
+Retrieve each parent of the matched _, optionally filtered by a selector
 
 ```js
 .parent()
@@ -1503,7 +1503,7 @@ u('a').parent('p');
 
 [.children()](#parent) get all of the direct children
 
-[.find()](#find) get all of the descendants of the matched nodes
+[.find()](#find) get all of the descendants of the matched _
 
 [.closest()](#closest) get the first ascendant that matches the selector
 ## .prepend()
@@ -1516,7 +1516,7 @@ Add some html as a child at the beginning of each of the matched elements.
 .prepend('<div>')
 .prepend(u('<div>'))
 .prepend(u('<div>').first()) // Same as document.createElement('div')
-.prepend(u('<div></div><div></div>').nodes)
+.prepend(u('<div></div><div></div>')._)
 .prepend(function(){})
 .prepend(function(el){}, elements)
 .prepend(function(el){}, 10)
@@ -1531,7 +1531,7 @@ Add some html as a child at the beginning of each of the matched elements.
     - **string** containing the html that is going to be inserted
     - **instance of Umbrella**
     - **HTML node**
-    - **array** containing HTML nodes
+    - **array** containing HTML _
   - A callback that returns any of the previous. It gets passed these parameters:
     - **el**: the current element from the elements parameter, {} if none is specified and i if elements is number
     - **i**: the index of the current element
@@ -1622,7 +1622,7 @@ This method doesn't accept any parameters
 
 ### Return
 
-`u`: Returns an instance of Umbrella JS with the removed nodes.
+`u`: Returns an instance of Umbrella JS with the removed _.
 
 
 ### Examples
@@ -1800,7 +1800,7 @@ u('form.contact').handle('submit', async e => {
 
 ## .siblings()
 
-Get the siblings of all of the nodes with an optional filter
+Get the siblings of all of the _ with an optional filter
 
 ```js
 .siblings(selector);
@@ -1809,13 +1809,13 @@ Get the siblings of all of the nodes with an optional filter
 
 ### Parameters
 
-`selector`: a string containing a selector that nodes must pass or a function that return a boolean. See [.filter()](#selector) for a better explanation
+`selector`: a string containing a selector that _ must pass or a function that return a boolean. See [.filter()](#selector) for a better explanation
 
 
 
 ### Return
 
-`u`: returns an instance of Umbrella JS with the new siblings as nodes
+`u`: returns an instance of Umbrella JS with the new siblings as _
 
 
 
@@ -1839,11 +1839,11 @@ u("li").siblings();
 
 [.parent()](#parent) get all of the direct parents
 
-[.find()](#find) get all of the descendants of the matched nodes
+[.find()](#find) get all of the descendants of the matched _
 
 [.closest()](#closest) get the first ascendant that matches the selector
 
-[.children()](#closest) get the direct children of all of the nodes with an optional filter
+[.children()](#closest) get the direct children of all of the _ with an optional filter
 
 ## .size()
 
@@ -1996,7 +1996,7 @@ u("h2").toggleClass("main", u('.accept').is(':checked'));
 
 ## .trigger()
 
-Calls an event on all of the matched nodes
+Calls an event on all of the matched _
 
 ```js
 .trigger('event1', data)
@@ -2034,11 +2034,11 @@ setInterval(function(){
 
 ### Related
 
-[.on()](#on) add an event listener to the matched nodes
+[.on()](#on) add an event listener to the matched _
 
 [.handle()](#off) Same as `.on()`, but it prevents the default action
 
-[.off()](#off) Removes an event from matched nodes
+[.off()](#off) Removes an event from matched _
 
 ## .wrap()
 
@@ -2143,7 +2143,7 @@ Result:
 </div>
 ```
 
-Nested selector arguments with multiple child nodes:
+Nested selector arguments with multiple child _:
 
 ```html
 <button class="example">Link1</button>

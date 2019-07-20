@@ -112,7 +112,7 @@ describe("u()", function() {
   });
 
   it("can select an html element", function() {
-    var object = u('.demo li').nodes[0];
+    var object = u('.demo li')._[0];
     expect(u(object).length).to.equal(1);
   });
 
@@ -140,29 +140,29 @@ describe("u()", function() {
   // });
 
   it("can use a context", function() {
-    var context = u('.demo li').nodes[0];
+    var context = u('.demo li')._[0];
     expect(u('a', context).length).to.equal(1);
   });
 
   it("can read the length", function() {
-    expect(u('a').nodes.length).to.equal(u('a').length);
+    expect(u('a')._.length).to.equal(u('a').length);
   });
 
   it("can generate a <tr>", function() {
-    expect(u('<tr>').nodes[0].tagName).to.equal('TR');
-    expect(u('<tr >').nodes[0].tagName).to.equal('TR');
-    expect(u('<tr class="hello">').nodes[0].tagName).to.equal('TR');
+    expect(u('<tr>')._[0].tagName).to.equal('TR');
+    expect(u('<tr >')._[0].tagName).to.equal('TR');
+    expect(u('<tr class="hello">')._[0].tagName).to.equal('TR');
   });
 
   it("can generate a <td>", function() {
-    expect(u('<td>').nodes[0].tagName).to.equal('TD');
-    expect(u('<td >').nodes[0].tagName).to.equal('TD');
-    expect(u('<td class="hello">').nodes[0].tagName).to.equal('TD');
+    expect(u('<td>')._[0].tagName).to.equal('TD');
+    expect(u('<td >')._[0].tagName).to.equal('TD');
+    expect(u('<td class="hello">')._[0].tagName).to.equal('TD');
   });
 
   it("can generate a <th>", function() {
-    expect(u('<th>').nodes[0].tagName).to.equal('TH');
-    expect(u('<th >').nodes[0].tagName).to.equal('TH');
-    expect(u('<th class="hello">').nodes[0].tagName).to.equal('TH');
+    expect(u('<th>')._[0].tagName).to.equal('TH');
+    expect(u('<th >')._[0].tagName).to.equal('TH');
+    expect(u('<th class="hello">')._[0].tagName).to.equal('TH');
   });
 });

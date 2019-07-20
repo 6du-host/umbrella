@@ -30,7 +30,7 @@ Another way is doing event delegation, for which the parameters are:
 
 `event1`, `event2`, `eventN`: same as before
 
-`selector`: a CSS selector that matches the nodes that will trigger it
+`selector`: a CSS selector that matches the _ that will trigger it
 
 `callback`: same as before
 
@@ -73,6 +73,6 @@ u('input').on('change click blur paste', function(){
 
 [.handle()](#handle) Same as `.on()`, but it prevents the default action
 
-[.trigger()](#trigger) calls an event on all of the matched nodes
+[.trigger()](#trigger) calls an event on all of the matched _
 
-[.off()](#off) Removes an event from  matched nodes
+[.off()](#off) Removes an event from  matched _

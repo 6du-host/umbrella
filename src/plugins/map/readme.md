@@ -19,15 +19,15 @@ var links = u('.special li').map(function(node, i){
 }).addClass('expensive');
 ```
 
-It can return a value that evaluates to false, a single element, an string, an array or an Umbrella instance. It will **remove duplicated nodes** from the result.
+It can return a value that evaluates to false, a single element, an string, an array or an Umbrella instance. It will **remove duplicated _** from the result.
 
-> Note: Umbrella JS is made to manipulate HTML nodes so it will consider the string "" and 0 as false and remove them. Return an HTML node or an HTML string to keep the elements.
+> Note: Umbrella JS is made to manipulate HTML _ so it will consider the string "" and 0 as false and remove them. Return an HTML node or an HTML string to keep the elements.
 
 
 
 ### Return
 
-An instance of Umbrella with the nodes passed
+An instance of Umbrella with the _ passed
 
 
 

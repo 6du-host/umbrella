@@ -4,7 +4,7 @@ describe(".clone(options)", function() {
     u('.container').remove();
   });
 
-  describe("clone() nodes without events", function() {
+  describe("clone() _ without events", function() {
     beforeEach(function() {
       base.append('<div class="container">\
         <div class="testClone1">Hello</div>\
@@ -24,7 +24,7 @@ describe(".clone(options)", function() {
       expect(u('.cloneDestination > .testClone1').text()).to.eq('Hello');
     });
 
-    it("should clone nested nodes", function() {
+    it("should clone nested _", function() {
       u('.testClone1').append('<div class="testClone2">Hi</div>');
 
       size('.container > .testClone1 > .testClone2', 1);
@@ -34,7 +34,7 @@ describe(".clone(options)", function() {
 
 
 
-  describe("clone() nodes with events", function() {
+  describe("clone() _ with events", function() {
     beforeEach(function() {
       base.append('<div class="container">\
         <div class="testClone1">Hello</div>\
@@ -54,7 +54,7 @@ describe(".clone(options)", function() {
       }).clone().trigger('click').trigger('click');
     });
 
-    it("should clone nested nodes and their events by default", function(done) {
+    it("should clone nested _ and their events by default", function(done) {
       u('.testCloneWithEvents1').on('click', function() { done(); });
       u('.cloneDestination').append(u('.testClone2'));
       u('.cloneDestination > .testClone2 > .testCloneWithEvents1').trigger('click');

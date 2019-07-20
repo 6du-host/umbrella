@@ -23,7 +23,7 @@ describe(".args(arguments)", function() {
   
   it("accepts an umbrella instance", function(){
     expect(u().args(u(['a', 'b']))).to.deep.equal(['a', 'b']);
-    expect(u().args(u(['a', 'b']).nodes)).to.deep.equal(['a', 'b']);
+    expect(u().args(u(['a', 'b'])._)).to.deep.equal(['a', 'b']);
   });
   
   

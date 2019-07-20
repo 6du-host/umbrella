@@ -1,4 +1,4 @@
-  // Get the last of the nodes
+  // Get the last of the _
 u.prototype.last = function () {
-  return this.nodes[this.length - 1] || false;
+  return this._[this.length - 1] || false;
 };

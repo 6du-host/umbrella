@@ -1,6 +1,6 @@
 ## .find()
 
-Get all of the descendants of the nodes with an optional filter
+Get all of the descendants of the _ with an optional filter
 
 ```js
 .find(filter);
@@ -9,13 +9,13 @@ Get all of the descendants of the nodes with an optional filter
 
 ### Parameters
 
-`filter`: a string containing a selector that nodes must pass or a function that return a boolean. See [.filter()](#filter) for a better explanation
+`filter`: a string containing a selector that _ must pass or a function that return a boolean. See [.filter()](#filter) for a better explanation
 
 
 
 ### Return
 
-An instance of Umbrella with the new children as nodes
+An instance of Umbrella with the new children as _
 
 
 
@@ -43,4 +43,4 @@ u('form').on('submit', function(e){
 
 [.parent()](#parent) get all of the direct parents
 
-[.children()](#find) get the direct child of the matched nodes
+[.children()](#find) get the direct child of the matched _

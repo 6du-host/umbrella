@@ -112,7 +112,7 @@ describe("u()", function() {
   });
 
   it("can select an html element", function() {
-    var object = u('.demo li').nodes[0];
+    var object = u('.demo li')._[0];
     expect(u(object).length).to.equal(1);
   });
 
@@ -140,30 +140,30 @@ describe("u()", function() {
   // });
 
   it("can use a context", function() {
-    var context = u('.demo li').nodes[0];
+    var context = u('.demo li')._[0];
     expect(u('a', context).length).to.equal(1);
   });
 
   it("can read the length", function() {
-    expect(u('a').nodes.length).to.equal(u('a').length);
+    expect(u('a')._.length).to.equal(u('a').length);
   });
 
   it("can generate a <tr>", function() {
-    expect(u('<tr>').nodes[0].tagName).to.equal('TR');
-    expect(u('<tr >').nodes[0].tagName).to.equal('TR');
-    expect(u('<tr class="hello">').nodes[0].tagName).to.equal('TR');
+    expect(u('<tr>')._[0].tagName).to.equal('TR');
+    expect(u('<tr >')._[0].tagName).to.equal('TR');
+    expect(u('<tr class="hello">')._[0].tagName).to.equal('TR');
   });
 
   it("can generate a <td>", function() {
-    expect(u('<td>').nodes[0].tagName).to.equal('TD');
-    expect(u('<td >').nodes[0].tagName).to.equal('TD');
-    expect(u('<td class="hello">').nodes[0].tagName).to.equal('TD');
+    expect(u('<td>')._[0].tagName).to.equal('TD');
+    expect(u('<td >')._[0].tagName).to.equal('TD');
+    expect(u('<td class="hello">')._[0].tagName).to.equal('TD');
   });
 
   it("can generate a <th>", function() {
-    expect(u('<th>').nodes[0].tagName).to.equal('TH');
-    expect(u('<th >').nodes[0].tagName).to.equal('TH');
-    expect(u('<th class="hello">').nodes[0].tagName).to.equal('TH');
+    expect(u('<th>')._[0].tagName).to.equal('TH');
+    expect(u('<th >')._[0].tagName).to.equal('TH');
+    expect(u('<th class="hello">')._[0].tagName).to.equal('TH');
   });
 });
 
@@ -416,7 +416,7 @@ describe(".append(html)", function() {
     it("can append a table row", function() {
       var table = u('table.tbl').append('<tr><td>Hi</td></tr>');
       var result = '<table class="tbl"><tr><td>Hi</td></tr></table>';
-      expect(table.nodes[0].outerHTML).to.equal(result);
+      expect(table._[0].outerHTML).to.equal(result);
     });
 
     it("can add just text", function() {
@@ -578,7 +578,7 @@ describe(".args(arguments)", function() {
   
   it("accepts an umbrella instance", function(){
     expect(u().args(u(['a', 'b']))).to.deep.equal(['a', 'b']);
-    expect(u().args(u(['a', 'b']).nodes)).to.deep.equal(['a', 'b']);
+    expect(u().args(u(['a', 'b'])._)).to.deep.equal(['a', 'b']);
   });
   
   
@@ -760,7 +760,7 @@ describe(".attr(name, value)", function() {
     expect(base.attr('title')).to.equal('Hello');
   });
 
-  it("can be called with no nodes", function() {
+  it("can be called with no _", function() {
     expect(u('dfsdf').attr('title')).to.equal('');
   });
 });
@@ -844,7 +844,7 @@ describe(".clone(options)", function() {
     u('.container').remove();
   });
 
-  describe("clone() nodes without events", function() {
+  describe("clone() _ without events", function() {
     beforeEach(function() {
       base.append('<div class="container">\
         <div class="testClone1">Hello</div>\
@@ -864,7 +864,7 @@ describe(".clone(options)", function() {
       expect(u('.cloneDestination > .testClone1').text()).to.eq('Hello');
     });
 
-    it("should clone nested nodes", function() {
+    it("should clone nested _", function() {
       u('.testClone1').append('<div class="testClone2">Hi</div>');
 
       size('.container > .testClone1 > .testClone2', 1);
@@ -874,7 +874,7 @@ describe(".clone(options)", function() {
 
 
 
-  describe("clone() nodes with events", function() {
+  describe("clone() _ with events", function() {
     beforeEach(function() {
       base.append('<div class="container">\
         <div class="testClone1">Hello</div>\
@@ -894,7 +894,7 @@ describe(".clone(options)", function() {
       }).clone().trigger('click').trigger('click');
     });
 
-    it("should clone nested nodes and their events by default", function(done) {
+    it("should clone nested _ and their events by default", function(done) {
       u('.testCloneWithEvents1').on('click', function() { done(); });
       u('.cloneDestination').append(u('.testClone2'));
       u('.cloneDestination > .testClone2 > .testCloneWithEvents1').trigger('click');
@@ -1021,7 +1021,7 @@ describe(".data(name, value)", function() {
     expect(base.data('title')).to.equal('Hello');
   });
 
-  it("can be called with no nodes", function() {
+  it("can be called with no _", function() {
     expect(u('dfsdf').data('title')).to.equal('');
   });
 });
@@ -1311,24 +1311,24 @@ describe(".empty()", function() {
     u('.empty-test div').empty();
   });
 
-  it("will clean text-only nodes", function() {
+  it("will clean text-only _", function() {
     u('.empty-test').html('Hello world');
     expect(u('.empty-test').html()).to.equal('Hello world');
     u('.empty-test').empty();
     expect(u('.empty-test').html()).to.equal('');
   });
 
-  it("will clean mixed nodes", function() {
+  it("will clean mixed _", function() {
     u('.empty-test').html('Hello world!<p>How <strong>are you</strong>?</p>');
     u('.empty-test').empty();
     expect(u('.empty-test').html()).to.equal('');
   });
 
-  it("should return an instance of umbrella with the empty nodes", function() {
+  it("should return an instance of umbrella with the empty _", function() {
     var result = u('.empty-test').empty();
 
     expect(result).to.be.instanceof(u);
-    expect(result.nodes).to.have.length(1);
+    expect(result._).to.have.length(1);
     expect(result.attr('class')).to.equal('empty-test');
   });
 
@@ -2140,13 +2140,13 @@ describe(".remove()", function() {
     children.remove(); // Remove them again
   });
 
-  it("should return an instance of umbrella with the removed nodes", function() {
+  it("should return an instance of umbrella with the removed _", function() {
     var result = u('.remove-test').remove();
 
     expect(result).to.be.instanceof(u);
-    expect(result.nodes).to.have.length(1);
+    expect(result._).to.have.length(1);
     expect(result.attr('class')).to.equal('remove-test');
-    expect(result.children().nodes).to.have.length(2); // Two li children.
+    expect(result.children()._).to.have.length(2); // Two li children.
   });
 
   it("removes a single element", function() {
@@ -2290,7 +2290,7 @@ describe(".replace(newValue)", function() {
     base.find('button.update').remove();
   });
 
-  it("replace multi nodes string case", function() {
+  it("replace multi _ string case", function() {
     base.append('<a class="save">Save</a><a class="save">Save</a>');
 
     base.find('a.save').replace('<button class="update">Update</button>');
@@ -2310,7 +2310,7 @@ describe(".replace(newValue)", function() {
     base.find('button.update').remove();
   });
 
-  it("replace multi nodes function case", function() {
+  it("replace multi _ function case", function() {
     base.append('<a class="save">Save</a><a class="save">Save</a>');
 
     base.find('a.save').replace(function(link){
@@ -2464,13 +2464,13 @@ describe(".siblings(selector)", function() {
       </ul> \
     ');
 
-    expect(u('.siblings-test').nodes.length).to.equal(2);
-    expect(u('.siblings-test li').nodes.length).to.equal(6);
+    expect(u('.siblings-test')._.length).to.equal(2);
+    expect(u('.siblings-test li')._.length).to.equal(6);
   });
 
   afterEach(function() {
     u('.siblings-test').remove();
-    expect(u('.siblings-test').nodes.length).to.equal(0);
+    expect(u('.siblings-test')._.length).to.equal(0);
   });
   
   it("should be a function", function() {
@@ -2478,19 +2478,19 @@ describe(".siblings(selector)", function() {
   });
   
   it("can select multiple siblings", function() {
-    expect(base.find('#siblings-2').siblings().nodes.length).to.equal(2);
+    expect(base.find('#siblings-2').siblings()._.length).to.equal(2);
   });
   
   it("can filter the siblings", function() {
-    expect(base.find('#siblings-1').siblings('#siblings-2').nodes.length).to.equal(1);
+    expect(base.find('#siblings-1').siblings('#siblings-2')._.length).to.equal(1);
   });
   
   it("can handle non existant siblings ", function() {
-    expect(base.find('#siblings-2').siblings('.nonexist').nodes.length).to.equal(0);
+    expect(base.find('#siblings-2').siblings('.nonexist')._.length).to.equal(0);
   });
 
-  it("can handle multiple nodes", function() {
-    expect(base.find('.siblings-test').children('.selected').siblings().nodes.length).to.equal(4);
+  it("can handle multiple _", function() {
+    expect(base.find('.siblings-test').children('.selected').siblings()._.length).to.equal(4);
   });
 });
 describe('.size()', function() {
@@ -2775,8 +2775,8 @@ describe(".wrap()", function() {
     base.append('<button class="example">Link2</button>');
 
     var wrappedNodes = u('.example').wrap('<a>').addClass('example-wrapper');
-    expect(wrappedNodes.nodes[0].innerText).to.equal('Link1')
-    expect(wrappedNodes.nodes[1].innerText).to.equal('Link2')
+    expect(wrappedNodes._[0].innerText).to.equal('Link1')
+    expect(wrappedNodes._[1].innerText).to.equal('Link2')
   });
 
   it("should add all specified attributes to the wrapper element using a chained umbrella js function", function() {

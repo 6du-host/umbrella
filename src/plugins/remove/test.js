@@ -34,13 +34,13 @@ describe(".remove()", function() {
     children.remove(); // Remove them again
   });
 
-  it("should return an instance of umbrella with the removed nodes", function() {
+  it("should return an instance of umbrella with the removed _", function() {
     var result = u('.remove-test').remove();
 
     expect(result).to.be.instanceof(u);
-    expect(result.nodes).to.have.length(1);
+    expect(result._).to.have.length(1);
     expect(result.attr('class')).to.equal('remove-test');
-    expect(result.children().nodes).to.have.length(2); // Two li children.
+    expect(result.children()._).to.have.length(2); // Two li children.
   });
 
   it("removes a single element", function() {

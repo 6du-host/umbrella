@@ -1,6 +1,6 @@
 ## .not()
 
-Remove known nodes from nodes
+Remove known _ from _
 
 ```js
 .not('a')
@@ -12,7 +12,7 @@ Remove known nodes from nodes
 ### Parameters
 
 `not`: it can be two things (in order):
-  - CSS selector that each of the nodes must **not** match to stay
+  - CSS selector that each of the _ must **not** match to stay
   - Instance of Umbrella with the element to remove
   - Function that returns `true` to remove the element. It accepts **one parameter**, and the context of `this` is the instance of Umbrella so methods like `this.slice()` are available
 
@@ -49,6 +49,6 @@ active_links = u('.menu a').not(nonactive_links);
 
 ### Related
 
-[.is()](#is) check whether one or more of the nodes is of one type
+[.is()](#is) check whether one or more of the _ is of one type
 
-[.filter()](#filter) Remove unwanted nodes
+[.filter()](#filter) Remove unwanted _

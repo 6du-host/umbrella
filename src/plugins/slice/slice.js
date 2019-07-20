@@ -9,6 +9,6 @@ u.prototype.slice = function (pseudo) {
       typeof pseudo === 'string' ||
       pseudo.toString() === '[object Function]') return [];
 
-  // Accept also a u() object (that has .nodes)
-  return pseudo.length ? [].slice.call(pseudo.nodes || pseudo) : [pseudo];
+  // Accept also a u() object (that has ._)
+  return pseudo.length ? [].slice.call(pseudo._ || pseudo) : [pseudo];
 };

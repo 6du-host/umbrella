@@ -1,6 +1,6 @@
 ## .filter()
 
-Remove all the nodes that doesn't match the criteria
+Remove all the _ that doesn't match the criteria
 
 ```js
 .filter('a')
@@ -12,14 +12,14 @@ Remove all the nodes that doesn't match the criteria
 ### Parameters
 
 `filter`: it can be:
-  - CSS selector that each of the nodes must match to stay
+  - CSS selector that each of the _ must match to stay
   - Instance of Umbrella with the elements to keep (the intersection will be kept)
   - Function that returns a boolean with true to keep the element. It accepts two parameters, `node` and `index`, and the context of `this` is the instance of Umbrella so methods like `this.slice()` are available
 
 
 ### Returns
 
-An instance of Umbrella with the nodes that passed the filter.
+An instance of Umbrella with the _ that passed the filter.
 
 
 ### Examples
@@ -51,6 +51,6 @@ u('input').filter(function(node, i){
 
 ### Related
 
-[.is()](#is) check whether one or more of the nodes is of one type
+[.is()](#is) check whether one or more of the _ is of one type
 
-[.not()](#not) remove all the nodes that match the criteria
+[.not()](#not) remove all the _ that match the criteria

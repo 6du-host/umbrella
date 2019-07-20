@@ -33,7 +33,7 @@ describe(".attr(name, value)", function() {
     expect(base.attr('title')).to.equal('Hello');
   });
 
-  it("can be called with no nodes", function() {
+  it("can be called with no _", function() {
     expect(u('dfsdf').attr('title')).to.equal('');
   });
 });

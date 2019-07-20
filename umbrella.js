@@ -31,21 +31,21 @@ var u = function (parameter, context) {
   }
 
   // Convert to an array, since there are many 'array-like' stuff in js-land
-  this.nodes = this.slice(parameter);
+  this._ = this.slice(parameter);
 };
 
-// Map u(...).length to u(...).nodes.length
+// Map u(...).length to u(...)._.length
 u.prototype = {
   get length () {
-    return this.nodes.length;
+    return this._.length;
   }
 };
 
 // This made the code faster, read "Initializing instance variables" in
 // https://developers.google.com/speed/articles/optimizing-javascript
-u.prototype.nodes = [];
+u.prototype._ = [];
 
-// Add class(es) to the matched nodes
+// Add class(es) to the matched _
 u.prototype.addClass = function () {
   return this.eacharg(arguments, function (el, name) {
     el.classList.add(name);
@@ -64,7 +64,7 @@ u.prototype.adjacent = function (html, data, callback) {
     }
   }
 
-  // Loop through all the nodes. It cannot reuse the eacharg() since the data
+  // Loop through all the _. It cannot reuse the eacharg() since the data
   // we want to do it once even if there's no "data" and we accept a selector
   return this.each(function (node, j) {
     var fragment = document.createDocumentFragment();
@@ -127,17 +127,17 @@ u.prototype.args = function (args, node, i) {
 };
 
 
-// Merge all of the nodes that the callback return into a simple array
+// Merge all of the _ that the callback return into a simple array
 u.prototype.array = function (callback) {
   callback = callback;
   var self = this;
-  return this.nodes.reduce(function (list, node, i) {
+  return this._.reduce(function (list, node, i) {
     var val;
     if (callback) {
       val = callback.call(self, node, i);
       if (!val) val = false;
       if (typeof val === 'string') val = u(val);
-      if (val instanceof u) val = val.nodes;
+      if (val instanceof u) val = val._;
     } else {
       val = node.innerHTML;
     }
@@ -170,7 +170,7 @@ u.prototype.before = function (html, data) {
 };
 
 
-// Get the direct children of all of the nodes with an optional filter
+// Get the direct children of all of the _ with an optional filter
 u.prototype.children = function (selector) {
   return this.map(function (node) {
     return this.slice(node.children);
@@ -190,7 +190,7 @@ u.prototype.clone = function () {
     this.getAll(node).each(function (src, i) {
       for (var key in this.mirror) {
         if (this.mirror[key]) {
-          this.mirror[key](src, dest.nodes[i]);
+          this.mirror[key](src, dest._[i]);
         }
       }
     });
@@ -200,13 +200,13 @@ u.prototype.clone = function () {
 };
 
 /**
- * Return an array of DOM nodes of a source node and its children.
+ * Return an array of DOM _ of a source node and its children.
  * @param  {[Object]} context DOM node.
  * @param  {[String]} tag     DOM node tagName.
- * @return {[Array]}          Array containing queried DOM nodes.
+ * @return {[Array]}          Array containing queried DOM _.
  */
 u.prototype.getAll = function getAll (context) {
-  return u([context].concat(u('*', context).nodes));
+  return u([context].concat(u('*', context)._));
 };
 
 // Store all of the operations to perform when cloning elements
@@ -276,7 +276,7 @@ u.prototype.data = function (name, value) {
 u.prototype.each = function (callback) {
   // By doing callback.call we allow "this" to be the context for
   // the callback (see http://stackoverflow.com/q/4065353 precisely)
-  this.nodes.forEach(callback.bind(this));
+  this._.forEach(callback.bind(this));
 
   return this;
 };
@@ -296,7 +296,7 @@ u.prototype.eacharg = function (args, callback) {
 };
 
 
-// Remove all children of the matched nodes from the DOM.
+// Remove all children of the matched _ from the DOM.
 u.prototype.empty = function () {
   return this.each(function (node) {
     while (node.firstChild) {
@@ -307,7 +307,7 @@ u.prototype.empty = function () {
 
 
 // .filter(selector)
-// Delete all of the nodes that don't pass the selector
+// Delete all of the _ that don't pass the selector
 u.prototype.filter = function (selector) {
   // The default function if it's a CSS selector
   // Cannot change name to 'selector' since it'd mess with it inside this fn
@@ -325,16 +325,16 @@ u.prototype.filter = function (selector) {
   // filter() receives an instance of Umbrella as in .filter(u('a'))
   if (selector instanceof u) {
     callback = function (node) {
-      return (selector.nodes).indexOf(node) !== -1;
+      return (selector._).indexOf(node) !== -1;
     };
   }
 
   // Just a native filtering function for ultra-speed
-  return u(this.nodes.filter(callback));
+  return u(this._.filter(callback));
 };
 
 
-// Find all the nodes children of the current ones matched by a selector
+// Find all the _ children of the current ones matched by a selector
 u.prototype.find = function (selector) {
   return this.map(function (node) {
     return u(selector || '*', node);
@@ -342,9 +342,9 @@ u.prototype.find = function (selector) {
 };
 
 
-// Get the first of the nodes
+// Get the first of the _
 u.prototype.first = function () {
-  return this.nodes[0] || false;
+  return this._[0] || false;
 };
 
 
@@ -353,11 +353,11 @@ u.prototype.first = function () {
 u.prototype.generate = function (html) {
   // Table elements need to be child of <table> for some f***ed up reason
   if (/^\s*<tr[> ]/.test(html)) {
-    return u(document.createElement('table')).html(html).children().children().nodes;
+    return u(document.createElement('table')).html(html).children().children()._;
   } else if (/^\s*<t(h|d)[> ]/.test(html)) {
-    return u(document.createElement('table')).html(html).children().children().children().nodes;
+    return u(document.createElement('table')).html(html).children().children().children()._;
   } else if (/^\s*</.test(html)) {
-    return u(document.createElement('div')).html(html).children().nodes;
+    return u(document.createElement('div')).html(html).children()._;
   } else {
     return document.createTextNode(html);
   }
@@ -394,7 +394,7 @@ u.prototype.html = function (text) {
   }
 
   // If we're attempting to set some text
-  // Loop through all the nodes
+  // Loop through all the _
   return this.each(function (node) {
     // Set the inner html to the node
     node.innerHTML = text;
@@ -402,7 +402,7 @@ u.prototype.html = function (text) {
 };
 
 
-// Check whether any of the nodes matches the selector
+// Check whether any of the _ matches the selector
 u.prototype.is = function (selector) {
   return this.filter(selector).length > 0;
 };
@@ -418,19 +418,19 @@ u.prototype.isInPage = function isInPage (node) {
   return (node === document.body) ? false : document.body.contains(node);
 };
 
-  // Get the last of the nodes
+  // Get the last of the _
 u.prototype.last = function () {
-  return this.nodes[this.length - 1] || false;
+  return this._[this.length - 1] || false;
 };
 
 
-// Merge all of the nodes that the callback returns
+// Merge all of the _ that the callback returns
 u.prototype.map = function (callback) {
   return callback ? u(this.array(callback)).unique() : this;
 };
 
 
-// Delete all of the nodes that equals the filter
+// Delete all of the _ that equals the filter
 u.prototype.not = function (filter) {
   return this.filter(function (node) {
     return !u(node).is(filter || true);
@@ -527,7 +527,7 @@ u.prototype.parent = function (selector) {
 };
 
 
-// Add nodes at the beginning of each node
+// Add _ at the beginning of each node
 u.prototype.prepend = function (html, data) {
   return this.adjacent(html, data, function (node, fragment) {
     node.insertBefore(fragment, node.firstChild);
@@ -535,9 +535,9 @@ u.prototype.prepend = function (html, data) {
 };
 
 
-// Delete the matched nodes from the DOM
+// Delete the matched _ from the DOM
 u.prototype.remove = function () {
-  // Loop through all the nodes
+  // Loop through all the _
   return this.each(function (node) {
     // Perform the removal only if the node has a parent
     if (node.parentNode) {
@@ -547,7 +547,7 @@ u.prototype.remove = function () {
 };
 
 
-// Removes a class from all of the matched nodes
+// Removes a class from all of the matched _
 u.prototype.removeClass = function () {
   // Loop the combination of each node with each argument
   return this.eacharg(arguments, function (el, name) {
@@ -559,12 +559,12 @@ u.prototype.removeClass = function () {
 
 // Replace the matched elements with the passed argument.
 u.prototype.replace = function (html, data) {
-  var nodes = [];
+  var _ = [];
   this.adjacent(html, data, function (node, fragment) {
-    nodes = nodes.concat(this.slice(fragment.children));
+    _ = _.concat(this.slice(fragment.children));
     node.parentNode.replaceChild(fragment, node);
   });
-  return u(nodes);
+  return u(_);
 };
 
 
@@ -641,8 +641,8 @@ u.prototype.slice = function (pseudo) {
       typeof pseudo === 'string' ||
       pseudo.toString() === '[object Function]') return [];
 
-  // Accept also a u() object (that has .nodes)
-  return pseudo.length ? [].slice.call(pseudo.nodes || pseudo) : [pseudo];
+  // Accept also a u() object (that has ._)
+  return pseudo.length ? [].slice.call(pseudo._ || pseudo) : [pseudo];
 };
 
 
@@ -651,7 +651,7 @@ u.prototype.slice = function (pseudo) {
 // Create a string from different things
 u.prototype.str = function (node, i) {
   return function (arg) {
-    // Call the function with the corresponding nodes
+    // Call the function with the corresponding _
     if (typeof arg === 'function') {
       return arg.call(this, node, i);
     }
@@ -670,7 +670,7 @@ u.prototype.text = function (text) {
   }
 
   // If we're attempting to set some text
-  // Loop through all the nodes
+  // Loop through all the _
   return this.each(function (node) {
     // Set the text content to the node
     node.textContent = text;
@@ -687,14 +687,14 @@ u.prototype.toggleClass = function (classes, addOrRemove) {
   }
   /* jshint +W018 */
 
-  // Loop through all the nodes and classes combinations
+  // Loop through all the _ and classes combinations
   return this.eacharg(classes, function (el, name) {
     el.classList.toggle(name);
   });
 };
 
 
-// Call an event manually on all the nodes
+// Call an event manually on all the _
 u.prototype.trigger = function (events) {
   var data = this.slice(arguments).slice(1);
 
@@ -718,9 +718,9 @@ u.prototype.trigger = function (events) {
 
 // [INTERNAL USE ONLY]
 
-// Removed duplicated nodes, used for some specific methods
+// Removed duplicated _, used for some specific methods
 u.prototype.unique = function () {
-  return u(this.nodes.reduce(function (clean, node) {
+  return u(this._.reduce(function (clean, node) {
     var istruthy = node !== null && node !== undefined && node !== false;
     return (istruthy && clean.indexOf(node) === -1) ? clean.concat(node) : clean;
   }, []));

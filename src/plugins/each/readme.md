@@ -1,6 +1,6 @@
 ## .each()
 
-Loop through all of the nodes and execute a callback for each
+Loop through all of the _ and execute a callback for each
 
 ```js
 .each(function(node, i){});
@@ -15,7 +15,7 @@ Loop through all of the nodes and execute a callback for each
 
 ### Return
 
-`u`: returns an instance of Umbrella JS with the same nodes
+`u`: returns an instance of Umbrella JS with the same _
 
 
 

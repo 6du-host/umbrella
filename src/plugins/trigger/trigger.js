@@ -1,4 +1,4 @@
-// Call an event manually on all the nodes
+// Call an event manually on all the _
 u.prototype.trigger = function (events) {
   var data = this.slice(arguments).slice(1);
 
