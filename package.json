@@ -1,11 +1,11 @@
 {
-  "name": "umbrellajs",
+  "name": "umbrellajs-6du",
   "version": "3.1.0",
-  "homepage": "https://umbrellajs.com/",
+  "homepage": "https://github.com/6du-host/umbrella",
   "authors": [
-    "Francisco Presencia <public@francisco.io>"
+    "6du<6du@protonmail.com>"
   ],
-  "description": "Lightweight and intuitive javascript library",
+  "description": "Lightweight and intuitive javascript library (fork by 6du-host)",
   "main": "umbrella.min.js",
   "keywords": [
     "umbrella",
@@ -34,17 +34,17 @@
     "url": "git+https://github.com/franciscop/umbrella.git"
   },
   "devDependencies": {
-    "grunt": "^1.0.3",
+    "grunt": "^1.0.4",
     "grunt-bytesize": "^0.2.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-jade": "^1.0.0",
-    "grunt-contrib-uglify": "^3.4.0",
+    "grunt-contrib-uglify": "^4.0.1",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-markdown": "^0.7.0",
     "grunt-mocha-phantomjs": "^4.0.0",
     "grunt-semistandard": "^1.0.6",
-    "marked": "^0.4.0",
-    "mocha-phantomjs": "^4.0.2"
+    "marked": "^0.7.0",
+    "mocha-phantomjs": "^4.1.0"
   },
   "semistandard": {
     "ignore": [
