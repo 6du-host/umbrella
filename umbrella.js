@@ -463,7 +463,9 @@ u.prototype.on = function (events, cb, cb2) {
               }
             });
           } catch (err) {}
-          cb2.apply(target, args);
+          if (cb2.apply(target, args) === false) {
+            e.preventDefault();
+          }
         }
       });
     };
@@ -471,7 +473,9 @@ u.prototype.on = function (events, cb, cb2) {
 
   // Add the custom data as arguments to the callback
   var callback = function (e) {
-    return cb.apply(this, [e].concat(e.detail || []));
+    if (cb.apply(this, [e].concat(e.detail || [])) === false) {
+      e.preventDefault();
+    }
   };
 
   return this.eacharg(events, function (node, event) {

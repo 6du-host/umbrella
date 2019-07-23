@@ -13,8 +13,8 @@ u.prototype.on = function (events, cb, cb2) {
               }
             });
           } catch (err) {}
-          if(cb2.apply(target, args) === false){
-            e.preventDefault()
+          if (cb2.apply(target, args) === false) {
+            e.preventDefault();
           }
         }
       });
@@ -23,8 +23,8 @@ u.prototype.on = function (events, cb, cb2) {
 
   // Add the custom data as arguments to the callback
   var callback = function (e) {
-    if (false === cb.apply(this, [e].concat(e.detail || []))){
-      e.preventDefault()
+    if (cb.apply(this, [e].concat(e.detail || [])) === false) {
+      e.preventDefault();
     }
   };
 
